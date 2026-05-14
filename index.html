@@ -1,185 +1,152 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swift Columbus Pros | 24/7 Emergency Plumbing</title>
-    <meta name="description" content="Professional emergency plumbing and drain cleaning services in Columbus. Available 24/7.">
-    
-    <style>
-        /* CSS Variables for Fast Customization */
-        :root {
-            --primary-blue: #002D62;
-            --action-green: #22C55E;
-            --text-dark: #1F2937;
-            --light-bg: #F0F7FF;
-            --white: #ffffff;
-        }
+<style>
+    /* BASE PERFORMANCE & RESET */
+    :root {
+        --primary: #0056b3;
+        --secondary: #28a745;
+        --dark: #333;
+        --light: #f8f9fa;
+        --grey: #6c757d;
+        --white: #ffffff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--dark);
+        background-color: var(--white);
+        overflow-x: hidden;
+    }
 
-        /* Essential Reset & Speed Optimization */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; color: var(--text-dark); line-height: 1.5; overflow-x: hidden; }
+    /* LAYOUT CONTAINERS */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    section { padding: 60px 0; }
 
-        /* Typography */
-        h1 { font-size: 2.5rem; line-height: 1.1; margin-bottom: 1rem; color: var(--primary-blue); }
-        p { margin-bottom: 1rem; font-size: 1.1rem; }
+    /* HEADER & NAVIGATION */
+    header {
+        background: var(--white);
+        border-bottom: 2px solid var(--light);
+        padding: 15px 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none; }
+    .logo span { color: var(--dark); }
 
-        /* Header */
-        header { background: var(--white); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .logo { font-weight: 800; font-size: 1.3rem; color: var(--primary-blue); text-decoration: none; }
-        .header-call { background: var(--primary-blue); color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; }
+    /* HERO SECTION */
+    .hero {
+        background: linear-gradient(rgba(0,86,179,0.05), rgba(0,86,179,0.02)), var(--white);
+        text-align: center;
+        padding: 80px 0;
+    }
+    .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 20px; color: var(--primary); }
+    .hero p { font-size: 1.25rem; color: var(--grey); margin-bottom: 40px; }
 
-        /* Hero Section */
-        .hero { background: var(--light-bg); padding: 60px 5%; text-align: center; }
-        .hero-content { max-width: 800px; margin: 0 auto; }
-        
-        /* THE MASSIVE CALL BUTTON */
-        .main-cta { 
-            display: inline-block; 
-            background: var(--action-green); 
-            color: white; 
-            padding: 22px 40px; 
-            font-size: 1.6rem; 
-            font-weight: 800; 
-            text-decoration: none; 
-            border-radius: 12px; 
-            margin: 20px 0; 
-            box-shadow: 0 10px 25px rgba(34, 197, 94, 0.4);
-            animation: pulse 2s infinite;
-            width: 100%;
-            max-width: 500px;
-        }
+    /* EMERGENCY CTA */
+    .pulse-btn {
+        display: inline-block;
+        background-color: var(--secondary);
+        color: white;
+        padding: 25px 50px;
+        font-size: 1.8rem;
+        font-weight: 800;
+        border-radius: 50px;
+        text-decoration: none;
+        box-shadow: 0 10px 20px rgba(40, 167, 69, 0.3);
+        animation: pulse 2s infinite;
+        transition: transform 0.3s ease;
+    }
+    .pulse-btn:hover { transform: scale(1.05); }
+    @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7); }
+        70% { box-shadow: 0 0 0 20px rgba(40, 167, 69, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
+    }
+    .response-time { display: block; margin-top: 15px; font-weight: 600; color: var(--dark); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-            100% { transform: scale(1); }
-        }
+    /* SERVICE CARDS */
+    .section-title { text-align: center; margin-bottom: 50px; font-size: 2.2rem; }
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+    }
+    .service-card {
+        background: var(--white);
+        padding: 40px;
+        border-radius: 12px;
+        border: 1px solid #eee;
+        transition: 0.3s;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .service-card:hover { border-color: var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+    .service-card svg { width: 40px; height: 40px; margin-bottom: 20px; fill: var(--primary); }
+    .service-card h3 { margin-bottom: 15px; font-size: 1.4rem; }
+    .service-card p { color: var(--grey); font-size: 0.95rem; }
 
-        /* Services Grid */
-        .services { padding: 50px 5%; background: white; }
-        .section-title { text-align: center; margin-bottom: 40px; font-size: 2rem; color: var(--primary-blue); }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .card { padding: 30px; border: 1px solid #e5e7eb; border-radius: 10px; transition: transform 0.3s ease; text-align: center; }
-        .card:hover { transform: translateY(-5px); border-color: var(--primary-blue); }
-        .card svg { width: 40px; height: 40px; margin-bottom: 15px; fill: var(--primary-blue); }
+    /* HOW IT WORKS */
+    .steps { display: flex; justify-content: space-between; gap: 40px; margin-top: 30px; }
+    .step { flex: 1; text-align: center; position: relative; }
+    .step-num { 
+        width: 50px; height: 50px; background: var(--primary); color: white; 
+        border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        margin: 0 auto 20px; font-weight: bold; font-size: 1.2rem;
+    }
 
-        /* Trust Bar */
-        .trust-bar { background: #f9fafb; padding: 20px; text-align: center; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; border-bottom: 1px solid #eee; }
-        .trust-item { font-weight: bold; color: #6b7280; display: flex; align-items: center; gap: 5px; font-size: 0.9rem; }
+    /* TRUST SECTION */
+    .trust-box { background: var(--light); border-radius: 20px; padding: 40px; }
+    .trust-list { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+    .trust-item { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 1.1rem; }
+    .trust-item svg { width: 24px; height: 24px; fill: var(--secondary); }
 
-        /* Footer */
-        footer { background: #111827; color: #9ca3af; padding: 40px 5%; text-align: center; }
-        .footer-links { margin: 20px 0; display: flex; justify-content: center; gap: 20px; }
-        .footer-links a { color: #d1d5db; text-decoration: none; cursor: pointer; font-size: 0.9rem; }
-        .disclaimer { font-size: 0.75rem; max-width: 700px; margin: 20px auto; line-height: 1.4; border-top: 1px solid #374151; padding-top: 20px; }
+    /* SERVICE AREAS */
+    .area-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        margin-top: 30px;
+    }
+    .area-grid div { padding: 8px; border-left: 2px solid var(--primary); padding-left: 15px; font-size: 0.9rem; }
 
-        /* Modal / Legal Popups */
-        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); overflow-y: auto; }
-        .modal-content { background: white; margin: 5% auto; padding: 30px; width: 90%; max-width: 800px; border-radius: 10px; color: #333; position: relative; }
-        .close-btn { position: absolute; right: 20px; top: 15px; font-size: 25px; cursor: pointer; color: #000; }
+    /* FOOTER & MODALS */
+    footer { background: var(--dark); color: white; padding: 40px 0; text-align: center; }
+    .footer-links { margin: 20px 0; }
+    .footer-links a { color: #aaa; text-decoration: none; margin: 0 15px; font-size: 0.85rem; cursor: pointer; }
+    .footer-links a:hover { color: white; }
 
-        /* Mobile Adjustments */
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .main-cta { font-size: 1.3rem; padding: 18px 20px; }
-            .header-call span { display: none; }
-        }
-    </style>
-</head>
-<body>
+    .modal {
+        display: none; position: fixed; z-index: 2000; left: 0; top: 0; 
+        width: 100%; height: 100%; background: rgba(0,0,0,0.8);
+        padding: 20px;
+    }
+    .modal-content {
+        background: white; color: #333; max-width: 800px; margin: 5% auto;
+        padding: 40px; border-radius: 10px; max-height: 80vh; overflow-y: auto;
+        position: relative; text-align: left;
+    }
+    .close { position: absolute; right: 20px; top: 20px; font-size: 2rem; cursor: pointer; }
 
-    <!-- Header -->
-    <header>
-        <a href="#" class="logo">SWIFT COLUMBUS PROS</a>
-        <a href="tel:6143330584" class="header-call">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.11-.27 11.72 11.72 0 0 0 3.64 1c.54.09.95.54.95 1.09V20c0 .59-.47 1.07-1.07 1.07A19.93 19.93 0 0 1 3 4.07C3 3.47 3.48 3 4.07 3H7.5c.55 0 1 .41 1.09.95a11.72 11.72 0 0 0 1 3.64 1 1 0 0 1-.27 1.11l-2.2 2.2z"/></svg>
-            <span>CALL NOW</span>
-        </a>
-    </header>
+    /* STICKY CALL BUTTON (MOBILE) */
+    .sticky-call {
+        position: fixed; bottom: 0; left: 0; right: 0;
+        background: var(--secondary); color: white;
+        text-align: center; padding: 15px; text-decoration: none;
+        font-weight: 800; font-size: 1.2rem; z-index: 1500;
+        display: none;
+    }
 
-    <!-- Trust Bar -->
-    <div class="trust-bar">
-        <div class="trust-item">✓ LICENSED & INSURED</div>
-        <div class="trust-item">✓ 24/7 EMERGENCY RESPONSE</div>
-        <div class="trust-item">✓ UPFRONT PRICING</div>
-    </div>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Emergency Plumbing & Drain Cleaning in Columbus</h1>
-            <p>Fast, Reliable, and Professional Services. We handle burst pipes, clogged drains, and water heater failures 24/7.</p>
-            
-            <!-- THE BUTTON - REPLACE NUMBER BELOW -->
-            <a href="tel:6143330584" class="main-cta">
-                TAP TO CALL: (614) 333-0584
-            </a>
-            
-            <p style="font-size: 0.9rem; margin-top: 10px; color: #4b5563;">Average Arrival Time: 30-45 Minutes</p>
-        </div>
-    </section>
-
-    <!-- Services Grid -->
-    <section class="services">
-        <h2 class="section-title">Our Expert Services</h2>
-        <div class="grid">
-            <div class="card">
-                <svg viewBox="0 0 24 24"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/></svg>
-                <h3>Emergency Repair</h3>
-                <p>Fast response for leaks and bursts.</p>
-            </div>
-            <div class="card">
-                <svg viewBox="0 0 24 24"><path d="M12 21a9 9 0 1 1 0-18 9 9 0 0 1 0 18zm0-2a7 7 0 1 0 0-14 7 7 0 0 0 0 14z"/></svg>
-                <h3>Drain Cleaning</h3>
-                <p>Clearing tough clogs instantly.</p>
-            </div>
-            <div class="card">
-                <svg viewBox="0 0 24 24"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-7-7z"/></svg>
-                <h3>Water Heaters</h3>
-                <p>Repair and installation services.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Swift Columbus Pros. All rights reserved.</p>
-        <div class="footer-links">
-            <a onclick="openModal('privacy')">Privacy Policy</a>
-            <a onclick="openModal('terms')">Terms of Service</a>
-        </div>
-        <div class="disclaimer">
-            <strong>Referral Disclaimer:</strong> Swift Columbus Pros is a free referral service that connects users with local plumbing contractors. All contractors are independent and we do not warrant or guarantee any work performed. It is the responsibility of the homeowner to verify that the contractor they hire has the necessary license and insurance.
-        </div>
-    </footer>
-
-    <!-- Modals (Legal Content) -->
-    <div id="legalModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div id="modalText"></div>
-        </div>
-    </div>
-
-    <script>
-        function openModal(type) {
-            const modal = document.getElementById('legalModal');
-            const text = document.getElementById('modalText');
-            if(type === 'privacy') {
-                text.innerHTML = "<h2>Privacy Policy</h2><p>We value your privacy. We collect your phone number only to connect you with a local plumber. We do not sell your data to third parties.</p>";
-            } else {
-                text.innerHTML = "<h2>Terms of Service</h2><p>By calling, you agree to be connected to a local service provider. We are a referral service and not responsible for any plumbing work performed.</p>";
-            }
-            modal.style.display = "block";
-        }
-        function closeModal() {
-            document.getElementById('legalModal').style.display = "none";
-        }
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('legalModal')) closeModal();
-        }
-    </script>
-
-</body>
-</html>
+    /* RESPONSIVE CSS */
+    @media (max-width: 768px) {
+        .nav-flex { justify-content: center; }
+        .hero { padding: 40px 0; }
+        .steps { flex-direction: column; }
+        .area-grid { grid-template-columns: repeat(2, 1fr); }
+        .sticky-call { display: block; }
+        .services-grid { grid-template-columns: 1fr; }
+        section { padding: 40px 0; }
+        body { padding-bottom: 60px; } /* For sticky button */
+    }
+</style>
