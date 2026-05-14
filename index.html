@@ -1,152 +1,305 @@
-<style>
-    /* BASE PERFORMANCE & RESET */
-    :root {
-        --primary: #0056b3;
-        --secondary: #28a745;
-        --dark: #333;
-        --light: #f8f9fa;
-        --grey: #6c757d;
-        --white: #ffffff;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        line-height: 1.6;
-        color: var(--dark);
-        background-color: var(--white);
-        overflow-x: hidden;
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="24/7 Emergency Plumbing in Columbus, OH. Residential & Commercial services. Fast response in under 60 minutes.">
+    <title>Swift Columbus Pros | 24/7 Emergency Plumbing & Repair</title>
+    <style>
+        /* CSS RESET & BASE STYLES */
+        :root {
+            --primary: #FF6B00;
+            --primary-dark: #E65A00;
+            --secondary: #2D3436;
+            --white: #FFFFFF;
+            --gray: #F4F7F6;
+            --text: #333333;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--white);
+            scroll-behavior: smooth;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        h1, h2, h3 { line-height: 1.2; font-weight: 800; }
+        a { text-decoration: none; color: inherit; }
 
-    /* LAYOUT CONTAINERS */
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    section { padding: 60px 0; }
+        /* HEADER & HERO */
+        header { padding: 20px 0; background: var(--white); border-bottom: 1px solid #eee; }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 900; color: var(--primary); text-transform: uppercase; letter-spacing: -1px; }
 
-    /* HEADER & NAVIGATION */
-    header {
-        background: var(--white);
-        border-bottom: 2px solid var(--light);
-        padding: 15px 0;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-    }
-    .nav-flex { display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none; }
-    .logo span { color: var(--dark); }
+        .hero { 
+            padding: 80px 0; 
+            text-align: center; 
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f4f7f6"/><circle cx="50" cy="50" r="1" fill="%23ccc"/></svg>');
+        }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 15px; color: var(--secondary); }
+        .hero p { font-size: 1.25rem; color: #666; margin-bottom: 40px; }
 
-    /* HERO SECTION */
-    .hero {
-        background: linear-gradient(rgba(0,86,179,0.05), rgba(0,86,179,0.02)), var(--white);
-        text-align: center;
-        padding: 80px 0;
-    }
-    .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 20px; color: var(--primary); }
-    .hero p { font-size: 1.25rem; color: var(--grey); margin-bottom: 40px; }
+        /* PULSING BUTTON */
+        .cta-box { display: inline-block; }
+        .btn-emergency {
+            display: block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 25px 50px;
+            font-size: 2rem;
+            font-weight: 900;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(255,107,0,0.3);
+            animation: pulse 2s infinite;
+            transition: transform 0.2s;
+        }
+        .btn-emergency:hover { transform: scale(1.02); background: var(--primary-dark); }
+        .response-time { display: block; margin-top: 15px; font-weight: 700; color: var(--primary); text-transform: uppercase; font-size: 0.9rem; }
 
-    /* EMERGENCY CTA */
-    .pulse-btn {
-        display: inline-block;
-        background-color: var(--secondary);
-        color: white;
-        padding: 25px 50px;
-        font-size: 1.8rem;
-        font-weight: 800;
-        border-radius: 50px;
-        text-decoration: none;
-        box-shadow: 0 10px 20px rgba(40, 167, 69, 0.3);
-        animation: pulse 2s infinite;
-        transition: transform 0.3s ease;
-    }
-    .pulse-btn:hover { transform: scale(1.05); }
-    @keyframes pulse {
-        0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7); }
-        70% { box-shadow: 0 0 0 20px rgba(40, 167, 69, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
-    }
-    .response-time { display: block; margin-top: 15px; font-weight: 600; color: var(--dark); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(255, 107, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0); }
+        }
 
-    /* SERVICE CARDS */
-    .section-title { text-align: center; margin-bottom: 50px; font-size: 2.2rem; }
-    .services-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 30px;
-    }
-    .service-card {
-        background: var(--white);
-        padding: 40px;
-        border-radius: 12px;
-        border: 1px solid #eee;
-        transition: 0.3s;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .service-card:hover { border-color: var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-    .service-card svg { width: 40px; height: 40px; margin-bottom: 20px; fill: var(--primary); }
-    .service-card h3 { margin-bottom: 15px; font-size: 1.4rem; }
-    .service-card p { color: var(--grey); font-size: 0.95rem; }
+        /* SERVICES SECTION */
+        .services { padding: 80px 0; background: var(--gray); }
+        .section-title { text-align: center; margin-bottom: 50px; font-size: 2.5rem; }
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .card { 
+            background: var(--white); 
+            padding: 40px 30px; 
+            border-radius: 12px; 
+            text-align: center; 
+            transition: 0.3s; 
+            border: 1px solid #eee;
+        }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
+        .card svg { width: 50px; height: 50px; fill: var(--primary); margin-bottom: 20px; }
+        .card h3 { margin-bottom: 15px; font-size: 1.4rem; }
+        .card p { font-size: 0.95rem; color: #555; }
 
-    /* HOW IT WORKS */
-    .steps { display: flex; justify-content: space-between; gap: 40px; margin-top: 30px; }
-    .step { flex: 1; text-align: center; position: relative; }
-    .step-num { 
-        width: 50px; height: 50px; background: var(--primary); color: white; 
-        border-radius: 50%; display: flex; align-items: center; justify-content: center;
-        margin: 0 auto 20px; font-weight: bold; font-size: 1.2rem;
-    }
+        /* HOW IT WORKS */
+        .how-it-works { padding: 80px 0; text-align: center; }
+        .steps { display: flex; justify-content: space-around; margin-top: 50px; }
+        .step { flex: 1; padding: 0 20px; position: relative; }
+        .step-num { 
+            width: 50px; height: 50px; background: var(--primary); color: white; 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+            margin: 0 auto 20px; font-weight: 900; font-size: 1.5rem;
+        }
 
-    /* TRUST SECTION */
-    .trust-box { background: var(--light); border-radius: 20px; padding: 40px; }
-    .trust-list { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
-    .trust-item { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 1.1rem; }
-    .trust-item svg { width: 24px; height: 24px; fill: var(--secondary); }
+        /* TRUST SECTION */
+        .trust { background: var(--secondary); color: var(--white); padding: 80px 0; }
+        .trust-flex { display: flex; align-items: center; justify-content: space-between; }
+        .trust-list { list-style: none; }
+        .trust-list li { margin-bottom: 15px; font-size: 1.2rem; display: flex; align-items: center; }
+        .trust-list li::before { content: '✓'; color: var(--primary); font-weight: 900; margin-right: 15px; font-size: 1.5rem; }
 
-    /* SERVICE AREAS */
-    .area-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 15px;
-        margin-top: 30px;
-    }
-    .area-grid div { padding: 8px; border-left: 2px solid var(--primary); padding-left: 15px; font-size: 0.9rem; }
+        /* SERVICE AREAS */
+        .areas { padding: 60px 0; background: #fff; }
+        .area-list { 
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 20px; 
+            font-size: 0.9rem; color: #777; margin-top: 30px;
+        }
 
-    /* FOOTER & MODALS */
-    footer { background: var(--dark); color: white; padding: 40px 0; text-align: center; }
-    .footer-links { margin: 20px 0; }
-    .footer-links a { color: #aaa; text-decoration: none; margin: 0 15px; font-size: 0.85rem; cursor: pointer; }
-    .footer-links a:hover { color: white; }
+        /* FOOTER & MODALS */
+        footer { background: #1a1a1a; color: #999; padding: 60px 0; text-align: center; font-size: 0.85rem; }
+        .footer-links { margin-bottom: 20px; }
+        .footer-links a { margin: 0 10px; text-decoration: underline; cursor: pointer; }
+        
+        .modal { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.8); display: none; z-index: 1000; 
+            justify-content: center; align-items: center; padding: 20px;
+        }
+        .modal:target { display: flex; }
+        .modal-content { 
+            background: var(--white); padding: 40px; border-radius: 8px; 
+            max-width: 600px; max-height: 80vh; overflow-y: auto; position: relative; color: var(--text);
+        }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 2rem; font-weight: 700; }
 
-    .modal {
-        display: none; position: fixed; z-index: 2000; left: 0; top: 0; 
-        width: 100%; height: 100%; background: rgba(0,0,0,0.8);
-        padding: 20px;
-    }
-    .modal-content {
-        background: white; color: #333; max-width: 800px; margin: 5% auto;
-        padding: 40px; border-radius: 10px; max-height: 80vh; overflow-y: auto;
-        position: relative; text-align: left;
-    }
-    .close { position: absolute; right: 20px; top: 20px; font-size: 2rem; cursor: pointer; }
+        /* STICKY MOBILE CTA */
+        .sticky-call {
+            position: fixed; bottom: 0; left: 0; width: 100%; 
+            background: var(--primary); color: white; text-align: center; 
+            padding: 15px; font-weight: 900; font-size: 1.2rem; 
+            display: none; z-index: 999; box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+        }
 
-    /* STICKY CALL BUTTON (MOBILE) */
-    .sticky-call {
-        position: fixed; bottom: 0; left: 0; right: 0;
-        background: var(--secondary); color: white;
-        text-align: center; padding: 15px; text-decoration: none;
-        font-weight: 800; font-size: 1.2rem; z-index: 1500;
-        display: none;
-    }
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .grid { grid-template-columns: repeat(2, 1fr); }
+            .hero h1 { font-size: 2.5rem; }
+        }
+        @media (max-width: 600px) {
+            .grid { grid-template-columns: 1fr; }
+            .steps { flex-direction: column; gap: 40px; }
+            .hero h1 { font-size: 2rem; }
+            .btn-emergency { font-size: 1.5rem; padding: 20px; }
+            .sticky-call { display: block; }
+            .trust-flex { flex-direction: column; text-align: center; gap: 40px; }
+            body { padding-bottom: 60px; }
+        }
+    </style>
+</head>
+<body>
 
-    /* RESPONSIVE CSS */
-    @media (max-width: 768px) {
-        .nav-flex { justify-content: center; }
-        .hero { padding: 40px 0; }
-        .steps { flex-direction: column; }
-        .area-grid { grid-template-columns: repeat(2, 1fr); }
-        .sticky-call { display: block; }
-        .services-grid { grid-template-columns: 1fr; }
-        section { padding: 40px 0; }
-        body { padding-bottom: 60px; } /* For sticky button */
-    }
-</style>
+<header>
+    <div class="container nav-flex">
+        <div class="logo">Swift Columbus Pros</div>
+        <div style="font-weight: 700;">Columbus, OH</div>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>24/7 Expert Plumbing in Columbus</h1>
+        <p>Your Trusted Local Choice for Residential & Commercial Emergency Repair.</p>
+        <div class="cta-box">
+            <a href="tel:6145550199" class="btn-emergency">📞 (614) 555-0199</a>
+            <span class="response-time">Average Response Time: Under 60 Mins</span>
+        </div>
+    </div>
+</section>
+
+<section class="services">
+    <div class="container">
+        <h2 class="section-title">Our Comprehensive Services</h2>
+        <div class="grid">
+            <!-- Drain Cleaning -->
+            <div class="card">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                <h3>Drain Cleaning</h3>
+                <p>Clearing tough clogs from sinks, showers, and main sewer lines using professional-grade rooting equipment.</p>
+            </div>
+            <!-- Leak Repair -->
+            <div class="card">
+                <svg viewBox="0 0 24 24"><path d="M12 2s-8 7.33-8 11.67C4 17.33 7.58 21 12 21s8-3.67 8-7.33C20 9.33 12 2 12 2zm0 17c-3.31 0-6-2.69-6-5.67 0-3.33 6-10.33 6-10.33s6 7 6 10.33c0 2.98-2.69 5.67-6 5.67z"/></svg>
+                <h3>Emergency Leaks</h3>
+                <p>Rapid repair for burst pipes, slab leaks, and hidden water line failures to prevent costly home damage.</p>
+            </div>
+            <!-- Water Heater -->
+            <div class="card">
+                <svg viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-6 16c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm0-8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
+                <h3>Water Heaters</h3>
+                <p>Expert service and installation for both conventional tanks and modern high-efficiency tankless systems.</p>
+            </div>
+            <!-- Sewer Line -->
+            <div class="card">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93s3.05-7.44 7-7.93v15.86zm2 0V4.07c3.95.49 7 3.85 7 7.93s-3.05 7.44-7 7.93z"/></svg>
+                <h3>Sewer Line Repair</h3>
+                <p>Advanced video inspections and trenchless repair options for cracked or root-infested sewer lines.</p>
+            </div>
+            <!-- Sump Pump -->
+            <div class="card">
+                <svg viewBox="0 0 24 24"><path d="M19 15v-3c0-1.1-.9-2-2-2h-1V5c0-1.1-.9-2-2-2H9c-1.1 0-2 .9-2 2v5H6c-1.1 0-2 .9-2 2v3c-1.1 0-2 .9-2 2v3h20v-3c0-1.1-.9-2-2-2zM9 5h6v5H9V5zm10 15H5v-1h14v1z"/></svg>
+                <h3>Sump Pumps</h3>
+                <p>Critical maintenance and emergency replacement to keep your basement dry during Ohio's heavy rains.</p>
+            </div>
+            <!-- Toilet & Faucet -->
+            <div class="card">
+                <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-9.82-3h8.64l1.1-2H6.08l-1.1 2zm13.15-4.43c-.22-.36-.61-.57-1.03-.57H5.21l-.94-2H2v2h2l3.6 7.59-1.35 2.44C4.83 18.25 5.72 20 7.21 20H19v-2H7.21l1.1-2h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1z"/></svg>
+                <h3>Fixtures & Taps</h3>
+                <p>Repairing leaky faucets and running toilets to save you money on your monthly Columbus water bill.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="how-it-works">
+    <div class="container">
+        <h2 class="section-title">How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <h3>Call Us 24/7</h3>
+                <p>Describe your emergency to our local dispatch team.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <h3>Expert Dispatched</h3>
+                <p>A licensed plumber arrives at your door within the hour.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <h3>Problem Fixed</h3>
+                <p>Quality work at a fair price, guaranteed.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="trust">
+    <div class="container trust-flex">
+        <div>
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Why Choose Us?</h2>
+            <p style="opacity: 0.8;">The Swift Columbus Pros difference.</p>
+        </div>
+        <ul class="trust-list">
+            <li>No Service Call Fee with Repair</li>
+            <li>Licensed, Bonded, and Insured</li>
+            <li>Locally Owned and Operated</li>
+            <li>Upfront, Flat-Rate Pricing</li>
+        </ul>
+    </div>
+</section>
+
+<section class="areas">
+    <div class="container" style="text-align: center;">
+        <h2>Proudly Serving Greater Columbus</h2>
+        <div class="area-list">
+            <span>Dublin</span> <span>Westerville</span> <span>Gahanna</span> <span>Hilliard</span> 
+            <span>Bexley</span> <span>Upper Arlington</span> <span>Worthington</span> <span>New Albany</span> 
+            <span>Powell</span> <span>Grove City</span> <span>Canal Winchester</span> <span>Reynoldsburg</span> 
+            <span>Clintonville</span> <span>German Village</span> <span>Grandview Heights</span> <span>Pickerington</span>
+            <span>Lewis Center</span> <span>Blacklick</span> <span>Pataskala</span> <span>Delaware</span>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-links">
+            <a href="#disclaimer">Referral Disclaimer</a>
+            <a href="#tos">Terms of Service</a>
+            <a href="#privacy">Privacy Policy</a>
+        </div>
+        <p>&copy; 2024 Swift Columbus Pros. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<!-- MODALS -->
+<div id="disclaimer" class="modal">
+    <div class="modal-content">
+        <a href="#" class="close-modal">&times;</a>
+        <h3>Referral Disclaimer</h3>
+        <p>Swift Columbus Pros is a free referral service that helps users connect with local plumbing professionals. All contractors are independent and this site does not warrant or guarantee any work performed. It is the responsibility of the homeowner to verify that the contractor they hire has the necessary license and insurance required for the work being performed.</p>
+    </div>
+</div>
+
+<div id="tos" class="modal">
+    <div class="modal-content">
+        <a href="#" class="close-modal">&times;</a>
+        <h3>Terms of Service</h3>
+        <p>By using this website, you agree to our terms. We provide a platform to connect you with local plumbers in the Columbus area. All appointments are made directly between you and the service provider.</p>
+    </div>
+</div>
+
+<div id="privacy" class="modal">
+    <div class="modal-content">
+        <a href="#" class="close-modal">&times;</a>
+        <h3>Privacy Policy</h3>
+        <p>Your privacy is important to us. We do not sell your personal data. Any information provided via phone or this site is used solely to facilitate connection with a local service professional.</p>
+    </div>
+</div>
+
+<!-- STICKY CALL BUTTON (MOBILE ONLY) -->
+<a href="tel:6145550199" class="sticky-call">
+    CALL NOW: (614) 555-0199
+</a>
+
+</body>
+</html>
