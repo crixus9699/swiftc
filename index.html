@@ -1,283 +1,185 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swift Columbus Pros | Professional Plumbing</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Swift Columbus Pros | 24/7 Emergency Plumbing</title>
+    <meta name="description" content="Professional emergency plumbing and drain cleaning services in Columbus. Available 24/7.">
     
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        navy: '#002D62',
-                        actionGreen: '#22C55E',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
-
     <style>
-        .glass-header {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        /* CSS Variables for Fast Customization */
+        :root {
+            --primary-blue: #002D62;
+            --action-green: #22C55E;
+            --text-dark: #1F2937;
+            --light-bg: #F0F7FF;
+            --white: #ffffff;
         }
 
-        @keyframes pulse-custom {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
-            70% { transform: scale(1.03); box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        /* Essential Reset & Speed Optimization */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; color: var(--text-dark); line-height: 1.5; overflow-x: hidden; }
+
+        /* Typography */
+        h1 { font-size: 2.5rem; line-height: 1.1; margin-bottom: 1rem; color: var(--primary-blue); }
+        p { margin-bottom: 1rem; font-size: 1.1rem; }
+
+        /* Header */
+        header { background: var(--white); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .logo { font-weight: 800; font-size: 1.3rem; color: var(--primary-blue); text-decoration: none; }
+        .header-call { background: var(--primary-blue); color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; }
+
+        /* Hero Section */
+        .hero { background: var(--light-bg); padding: 60px 5%; text-align: center; }
+        .hero-content { max-width: 800px; margin: 0 auto; }
+        
+        /* THE MASSIVE CALL BUTTON */
+        .main-cta { 
+            display: inline-block; 
+            background: var(--action-green); 
+            color: white; 
+            padding: 22px 40px; 
+            font-size: 1.6rem; 
+            font-weight: 800; 
+            text-decoration: none; 
+            border-radius: 12px; 
+            margin: 20px 0; 
+            box-shadow: 0 10px 25px rgba(34, 197, 94, 0.4);
+            animation: pulse 2s infinite;
+            width: 100%;
+            max-width: 500px;
         }
 
-        .animate-pulse-green {
-            animation: pulse-custom 2s infinite;
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
         }
 
-        .magnetic-wrap {
-            display: inline-block;
-            transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
-        }
+        /* Services Grid */
+        .services { padding: 50px 5%; background: white; }
+        .section-title { text-align: center; margin-bottom: 40px; font-size: 2rem; color: var(--primary-blue); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card { padding: 30px; border: 1px solid #e5e7eb; border-radius: 10px; transition: transform 0.3s ease; text-align: center; }
+        .card:hover { transform: translateY(-5px); border-color: var(--primary-blue); }
+        .card svg { width: 40px; height: 40px; margin-bottom: 15px; fill: var(--primary-blue); }
 
-        /* Hide scrollbar for Chrome, Safari and Opera */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
+        /* Trust Bar */
+        .trust-bar { background: #f9fafb; padding: 20px; text-align: center; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; border-bottom: 1px solid #eee; }
+        .trust-item { font-weight: bold; color: #6b7280; display: flex; align-items: center; gap: 5px; font-size: 0.9rem; }
+
+        /* Footer */
+        footer { background: #111827; color: #9ca3af; padding: 40px 5%; text-align: center; }
+        .footer-links { margin: 20px 0; display: flex; justify-content: center; gap: 20px; }
+        .footer-links a { color: #d1d5db; text-decoration: none; cursor: pointer; font-size: 0.9rem; }
+        .disclaimer { font-size: 0.75rem; max-width: 700px; margin: 20px auto; line-height: 1.4; border-top: 1px solid #374151; padding-top: 20px; }
+
+        /* Modal / Legal Popups */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); overflow-y: auto; }
+        .modal-content { background: white; margin: 5% auto; padding: 30px; width: 90%; max-width: 800px; border-radius: 10px; color: #333; position: relative; }
+        .close-btn { position: absolute; right: 20px; top: 15px; font-size: 25px; cursor: pointer; color: #000; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .main-cta { font-size: 1.3rem; padding: 18px 20px; }
+            .header-call span { display: none; }
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
+<body>
 
-    <!-- Floating Glassmorphism Header -->
-    <header class="fixed top-0 w-full z-50 glass-header px-6 py-4">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <div class="bg-navy p-1.5 rounded-lg">
-                    <i data-lucide="droplets" class="text-white w-6 h-6"></i>
-                </div>
-                <span class="font-bold text-xl tracking-tight text-navy">Swift Columbus Pros</span>
-            </div>
-            
-            <nav class="hidden md:flex gap-8 font-medium text-sm text-slate-600">
-                <a href="#services" class="hover:text-navy transition-colors">Services</a>
-                <a href="#faq" class="hover:text-navy transition-colors">FAQ</a>
-                <a href="tel:6143330584" class="text-navy font-bold">(614) 333-0584</a>
-            </nav>
-
-            <a href="tel:6143330584" class="md:hidden bg-actionGreen text-white px-4 py-2 rounded-full font-bold text-sm animate-pulse-green">
-                Call Now
-            </a>
-        </div>
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">SWIFT COLUMBUS PROS</a>
+        <a href="tel:6143330584" class="header-call">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.11-.27 11.72 11.72 0 0 0 3.64 1c.54.09.95.54.95 1.09V20c0 .59-.47 1.07-1.07 1.07A19.93 19.93 0 0 1 3 4.07C3 3.47 3.48 3 4.07 3H7.5c.55 0 1 .41 1.09.95a11.72 11.72 0 0 0 1 3.64 1 1 0 0 1-.27 1.11l-2.2 2.2z"/></svg>
+            <span>CALL NOW</span>
+        </a>
     </header>
 
-    <!-- Hero Section -->
-    <section class="pt-40 pb-20 px-6">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-            <div class="space-y-8">
-                <div class="inline-block px-4 py-1.5 bg-blue-50 text-navy rounded-full text-sm font-semibold tracking-wide">
-                    ✨ #1 Rated Plumbers in Columbus
-                </div>
-                <h1 class="text-5xl md:text-7xl font-bold leading-[1.1] tracking-tight text-navy">
-                    Professional Plumbing. <br>
-                    <span class="text-slate-400">Zero Stress.</span>
-                </h1>
-                <p class="text-xl text-slate-600 max-w-lg leading-relaxed">
-                    Premium residential and commercial plumbing services. We handle the mess so you don't have to. Licensed, insured, and ready 24/7.
-                </p>
-                
-                <!-- Magnetic Button Container -->
-                <div class="magnetic-area inline-block">
-                    <a href="tel:6143330584" id="magnetic-btn" class="magnetic-wrap inline-block bg-actionGreen text-white px-8 py-5 rounded-2xl font-bold text-xl shadow-xl shadow-green-200 hover:shadow-2xl transition-shadow flex items-center gap-4 animate-pulse-green">
-                        <i data-lucide="phone-call"></i>
-                        TAP TO CALL (614) 333-0584
-                    </a>
-                </div>
-            </div>
-
-            <div class="relative">
-                <div class="w-full h-[500px] bg-slate-200 rounded-[40px] overflow-hidden shadow-2xl transform lg:rotate-3 transition-transform hover:rotate-0 duration-700">
-                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000" alt="Plumbing Service" class="w-full h-full object-cover">
-                </div>
-                <!-- Floating Badge -->
-                <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-3xl shadow-xl hidden md:block">
-                    <div class="flex items-center gap-4">
-                        <div class="flex -space-x-2">
-                            <div class="w-10 h-10 rounded-full bg-blue-100 border-2 border-white flex items-center justify-center text-xs font-bold">JD</div>
-                            <div class="w-10 h-10 rounded-full bg-green-100 border-2 border-white flex items-center justify-center text-xs font-bold">MK</div>
-                            <div class="w-10 h-10 rounded-full bg-orange-100 border-2 border-white flex items-center justify-center text-xs font-bold">AL</div>
-                        </div>
-                        <div>
-                            <p class="font-bold text-navy">500+ Happy Clients</p>
-                            <p class="text-sm text-slate-500">In the Columbus Area</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Trust Bar -->
-    <div class="bg-white py-12 border-y border-slate-100">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-wrap justify-center md:justify-between items-center gap-8 opacity-60 grayscale">
-                <div class="flex items-center gap-2 font-bold text-xl">
-                    <i data-lucide="shield-check" class="text-navy"></i> FULLY LICENSED
-                </div>
-                <div class="flex items-center gap-2 font-bold text-xl">
-                    <i data-lucide="award" class="text-navy"></i> 5-STAR RATED
-                </div>
-                <div class="flex items-center gap-2 font-bold text-xl">
-                    <i data-lucide="clock" class="text-navy"></i> 24/7 EMERGENCY
-                </div>
-                <div class="flex items-center gap-2 font-bold text-xl">
-                    <i data-lucide="check-circle" class="text-navy"></i> INSURED & BONDED
-                </div>
-            </div>
-        </div>
+    <div class="trust-bar">
+        <div class="trust-item">✓ LICENSED & INSURED</div>
+        <div class="trust-item">✓ 24/7 EMERGENCY RESPONSE</div>
+        <div class="trust-item">✓ UPFRONT PRICING</div>
     </div>
 
-    <!-- Interactive Services -->
-    <section id="services" class="py-24 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-navy mb-4">Our Premium Services</h2>
-                <div class="w-20 h-1.5 bg-actionGreen mx-auto rounded-full"></div>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="group bg-white p-8 rounded-[32px] border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 cursor-pointer">
-                    <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-navy transition-colors duration-500">
-                        <i data-lucide="waves" class="text-navy group-hover:text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-navy mb-4">Drain Cleaning</h3>
-                    <p class="text-slate-500 leading-relaxed">Advanced hydro-jetting technology to clear the most stubborn blockages instantly.</p>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="group bg-white p-8 rounded-[32px] border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 cursor-pointer">
-                    <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-navy transition-colors duration-500">
-                        <i data-lucide="thermometer" class="text-navy group-hover:text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-navy mb-4">Water Heaters</h3>
-                    <p class="text-slate-500 leading-relaxed">Installation and repair of tankless and traditional systems for endless hot water.</p>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="group bg-white p-8 rounded-[32px] border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 cursor-pointer">
-                    <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-navy transition-colors duration-500">
-                        <i data-lucide="wrench" class="text-navy group-hover:text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-navy mb-4">Emergency Repair</h3>
-                    <p class="text-slate-500 leading-relaxed">Burst pipes or major leaks? Our elite team is dispatched within minutes, not hours.</p>
-                </div>
-            </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Emergency Plumbing & Drain Cleaning in Columbus</h1>
+            <p>Fast, Reliable, and Professional Services. We handle burst pipes, clogged drains, and water heater failures 24/7.</p>
+            
+            <!-- THE BUTTON - REPLACE NUMBER BELOW -->
+            <a href="tel:6143330584" class="main-cta">
+                TAP TO CALL: (614) 333-0584
+            </a>
+            
+            <p style="font-size: 0.9rem; margin-top: 10px; color: #4b5563;">Average Arrival Time: 30-45 Minutes</p>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section id="faq" class="py-24 px-6 bg-navy text-white rounded-[60px] mx-4 mb-24">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-4xl font-bold mb-12 text-center">Frequently Asked Questions</h2>
-            
-            <div class="space-y-4">
-                <details class="group bg-white/5 rounded-2xl border border-white/10 overflow-hidden transition-all">
-                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none font-bold text-lg">
-                        What are your service hours?
-                        <i data-lucide="plus" class="group-open:rotate-45 transition-transform"></i>
-                    </summary>
-                    <div class="px-6 pb-6 text-slate-300">
-                        We operate 24 hours a day, 7 days a week, 365 days a year. Plumbing emergencies don't wait for business hours, and neither do we.
-                    </div>
-                </details>
-
-                <details class="group bg-white/5 rounded-2xl border border-white/10 overflow-hidden transition-all">
-                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none font-bold text-lg">
-                        Do you provide upfront pricing?
-                        <i data-lucide="plus" class="group-open:rotate-45 transition-transform"></i>
-                    </summary>
-                    <div class="px-6 pb-6 text-slate-300">
-                        Yes. We provide a transparent, flat-rate estimate before any work begins. No hidden fees, no hourly surprises.
-                    </div>
-                </details>
-
-                <details class="group bg-white/5 rounded-2xl border border-white/10 overflow-hidden transition-all">
-                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none font-bold text-lg">
-                        Is your work guaranteed?
-                        <i data-lucide="plus" class="group-open:rotate-45 transition-transform"></i>
-                    </summary>
-                    <div class="px-6 pb-6 text-slate-300">
-                        Absolutely. All our parts and labor come with a 100% satisfaction guarantee and a minimum 1-year warranty.
-                    </div>
-                </details>
+    <!-- Services Grid -->
+    <section class="services">
+        <h2 class="section-title">Our Expert Services</h2>
+        <div class="grid">
+            <div class="card">
+                <svg viewBox="0 0 24 24"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/></svg>
+                <h3>Emergency Repair</h3>
+                <p>Fast response for leaks and bursts.</p>
+            </div>
+            <div class="card">
+                <svg viewBox="0 0 24 24"><path d="M12 21a9 9 0 1 1 0-18 9 9 0 0 1 0 18zm0-2a7 7 0 1 0 0-14 7 7 0 0 0 0 14z"/></svg>
+                <h3>Drain Cleaning</h3>
+                <p>Clearing tough clogs instantly.</p>
+            </div>
+            <div class="card">
+                <svg viewBox="0 0 24 24"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-7-7z"/></svg>
+                <h3>Water Heaters</h3>
+                <p>Repair and installation services.</p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="pb-32 pt-12 px-6 text-center text-slate-400 text-sm">
-        <p>© 2024 Swift Columbus Pros. All Rights Reserved.</p>
-        <p class="mt-2">Columbus, OH and surrounding areas.</p>
+    <footer>
+        <p>&copy; 2026 Swift Columbus Pros. All rights reserved.</p>
+        <div class="footer-links">
+            <a onclick="openModal('privacy')">Privacy Policy</a>
+            <a onclick="openModal('terms')">Terms of Service</a>
+        </div>
+        <div class="disclaimer">
+            <strong>Referral Disclaimer:</strong> Swift Columbus Pros is a free referral service that connects users with local plumbing contractors. All contractors are independent and we do not warrant or guarantee any work performed. It is the responsibility of the homeowner to verify that the contractor they hire has the necessary license and insurance.
+        </div>
     </footer>
 
-    <!-- Floating Mobile CTA -->
-    <div class="fixed bottom-0 left-0 w-full p-4 md:hidden z-[60] bg-gradient-to-t from-white via-white to-transparent">
-        <a href="tel:6143330584" class="flex items-center justify-center gap-3 bg-actionGreen text-white py-4 rounded-2xl font-bold text-lg shadow-2xl animate-pulse-green">
-            <i data-lucide="phone" class="w-5 h-5"></i>
-            TAP TO CALL NOW
-        </a>
+    <!-- Modals (Legal Content) -->
+    <div id="legalModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div id="modalText"></div>
+        </div>
     </div>
 
     <script>
-        // Initialize Icons
-        lucide.createIcons();
-
-        // Magnetic Button Effect (Desktop Only)
-        const magneticBtn = document.getElementById('magnetic-btn');
-        const magneticArea = document.querySelector('.magnetic-area');
-
-        if (window.innerWidth > 768) {
-            magneticArea.addEventListener('mousemove', (e) => {
-                const rect = magneticBtn.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                
-                magneticBtn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-            });
-
-            magneticArea.addEventListener('mouseleave', () => {
-                magneticBtn.style.transform = `translate(0px, 0px)`;
-            });
+        function openModal(type) {
+            const modal = document.getElementById('legalModal');
+            const text = document.getElementById('modalText');
+            if(type === 'privacy') {
+                text.innerHTML = "<h2>Privacy Policy</h2><p>We value your privacy. We collect your phone number only to connect you with a local plumber. We do not sell your data to third parties.</p>";
+            } else {
+                text.innerHTML = "<h2>Terms of Service</h2><p>By calling, you agree to be connected to a local service provider. We are a referral service and not responsible for any plumbing work performed.</p>";
+            }
+            modal.style.display = "block";
         }
-
-        // Scroll Reveal Animation (Simulating Framer Motion)
-        const observerOptions = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.group, h1, p, .magnetic-area').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'all 0.8s cubic-bezier(0.22, 1, 0.36, 1)';
-            observer.observe(el);
-        });
+        function closeModal() {
+            document.getElementById('legalModal').style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('legalModal')) closeModal();
+        }
     </script>
+
 </body>
 </html>
